@@ -1,23 +1,25 @@
 const root=document.documentElement;
-const themeButton=document.querySelector('.theme-toggle');
-function setTheme(theme){root.dataset.theme=theme;localStorage.setItem('theme',theme);themeButton?.setAttribute('aria-pressed',String(theme==='dark'));document.querySelector('meta[name="theme-color"]')?.setAttribute('content',theme==='dark'?'#0d1220':'#f7f3e8')}
-themeButton?.addEventListener('click',()=>setTheme(root.dataset.theme==='dark'?'light':'dark'));
-setTheme(root.dataset.theme||'light');
+const theme=document.querySelector('.theme-toggle');
+const setTheme=t=>{root.dataset.theme=t;localStorage.setItem('theme',t);theme?.setAttribute('aria-pressed',String(t==='dark'));};
+theme?.addEventListener('click',()=>setTheme(root.dataset.theme==='dark'?'light':'dark'));
+theme?.setAttribute('aria-pressed',String(root.dataset.theme==='dark'));
 
 const menuButton=document.querySelector('.menu-toggle');
 const mobileNav=document.querySelector('.mobile-nav');
-menuButton?.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')!=='true';menuButton.setAttribute('aria-expanded',String(open));mobileNav?.classList.toggle('is-open',open)});
+menuButton?.addEventListener('click',()=>{const open=mobileNav.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open));});
 
-const layers={
-  physical:{number:'01',title:'Recovering more information from imperfect hardware',body:'Model non-ideal photonic sampling systems and use calibrated learning to reconstruct high-fidelity signals beyond conventional correction limits.',methods:'Signal modelling · calibration · neural inference',work:'Photonic ADC Signal Recovery',href:'/projects/photonic-adc/'},
-  link:{number:'02',title:'Links that learn while conditions change',body:'Build adaptive equalizers and decision systems that respond to drift, interference, and changing channel conditions without losing efficiency.',methods:'VM-CMA · LMS · bandits · change detection',work:'Adaptive DSP Equalization · Arista Wi-Fi',href:'/projects/adaptive-dsp/'},
-  edge:{number:'03',title:'Deploying intelligence inside real constraints',body:'Translate useful models into embedded systems where latency, memory, power, safety, and the boot path are part of the design—not afterthoughts.',methods:'Embedded C · CNNs · hardware-aware deployment',work:'Texas Instruments · EdgeAI fault detection',href:'/experience/'},
-  network:{number:'04',title:'Understanding behavior at network scale',body:'Measure coverage, simulate traffic, and reason about resource allocation across systems where individual links shape collective performance.',methods:'Packet analysis · simulation · graph methods',work:'Wi-Fi Coverage · Traffic Simulator',href:'/projects/network-systems/'}
+const pathData={
+  recover:{kicker:'Photonics · signal processing',heading:'Recover the waveform',copy:'Learning-assisted calibration reconstructs high-fidelity signals from a nonlinear photonic front end across changing power and sampling conditions.',href:'/research/photonic-adc/',label:'Open research case study ↗',image:'/assets/graph-photonic-architecture.png',alt:'Photonic time-stretch ADC architecture from Medha’s publication'},
+  adapt:{kicker:'Adaptive algorithms',heading:'Adapt to the channel',copy:'Variable-momentum equalization and reinforcement-learning formulations respond to dispersion, carrier offset, and changing optical conditions.',href:'/research/',label:'View undergraduate research ↗',image:'/assets/graph-dsp-evm.png',alt:'EVM and convergence plots from Medha’s adaptive DSP report'},
+  deploy:{kicker:'Embedded software · edge ML',heading:'Fit intelligence to hardware',copy:'Boot flows, flash protection, multicore loading, and edge inference make memory, latency, safety, and interfaces part of the algorithm.',href:'/experience/',label:'See engineering experience ↗',image:'/assets/graph-arista-gnn.png',alt:'Prediction results from a hardware-aware learning workflow'},
+  coordinate:{kicker:'Wireless networks · control',heading:'Coordinate the network',copy:'Client measurements, bandits, graph optimization, event detection, and safe reinforcement learning operate across fast and slow timescales.',href:'/projects/adaptive-wifi/',label:'Open Wi-Fi case study ↗',image:'/assets/graph-arista-topology.png',alt:'Access-point topology, interference graph, and channel coloring'}
 };
-const tabs=[...document.querySelectorAll('[data-layer]')];
-const panel=document.querySelector('.layer-panel');
-tabs.forEach((tab,index)=>{tab.addEventListener('click',()=>{tabs.forEach(t=>t.setAttribute('aria-selected','false'));tab.setAttribute('aria-selected','true');const d=layers[tab.dataset.layer];panel.querySelector('.panel-label span').textContent=d.number;panel.querySelector('h3').textContent=d.title;panel.querySelector('p:not(.panel-label)').textContent=d.body;const dd=panel.querySelectorAll('dd');dd[0].textContent=d.methods;dd[1].textContent=d.work;panel.querySelector('a').href=d.href});tab.addEventListener('keydown',e=>{if(!['ArrowDown','ArrowRight','ArrowUp','ArrowLeft'].includes(e.key))return;e.preventDefault();const next=(index+(['ArrowDown','ArrowRight'].includes(e.key)?1:-1)+tabs.length)%tabs.length;tabs[next].focus();tabs[next].click()})});
+const signalButtons=[...document.querySelectorAll('[data-signal]')];
+signalButtons.forEach(button=>button.addEventListener('click',()=>{const item=pathData[button.dataset.signal];if(!item)return;signalButtons.forEach(b=>{const active=b===button;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active));});document.querySelector('#signal-kicker').textContent=item.kicker;document.querySelector('#signal-heading').textContent=item.heading;document.querySelector('#signal-copy').textContent=item.copy;const link=document.querySelector('#signal-link');link.href=item.href;link.textContent=item.label;const image=document.querySelector('#signal-image');image.src=item.image;image.alt=item.alt;}));
 
-const filterButtons=[...document.querySelectorAll('[data-filter]')];
-const filterCards=[...document.querySelectorAll('[data-categories]')];
-filterButtons.forEach(button=>button.addEventListener('click',()=>{filterButtons.forEach(b=>b.classList.remove('active'));button.classList.add('active');const filter=button.dataset.filter;filterCards.forEach(card=>card.classList.toggle('is-hidden',filter!=='all'&&!card.dataset.categories.split(' ').includes(filter)))}));
+const filters=[...document.querySelectorAll('[data-filter]')];
+const cards=[...document.querySelectorAll('[data-categories]')];
+filters.forEach(button=>button.addEventListener('click',()=>{filters.forEach(b=>b.classList.toggle('active',b===button));const value=button.dataset.filter;cards.forEach(card=>card.hidden=value!=='all'&&!card.dataset.categories.split(' ').includes(value));}));
+
+const path=location.pathname;
+document.querySelectorAll('.desktop-nav a').forEach(a=>{if(path.startsWith(new URL(a.href).pathname))a.setAttribute('aria-current','page');});

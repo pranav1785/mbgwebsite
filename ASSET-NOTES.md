@@ -17,3 +17,12 @@ The prompt set used this shared instruction, with the subject replaced for each 
 | rose | essence-in-subtraction/p02-03.jpg | the carved foam rose sculpture only, including its entire base |
 
 AI-assisted extractions are previews, not replacement documentary images. Refer to the original project photography for the submitted artwork.
+
+
+## Added project previews
+
+Two additional background extractions were made with the built-in image tool, saved as `src/art/cutouts/abstract.webp` and `plaster.webp`.
+
+Inputs: `abstract-wiring/p03-04.jpg` (the hanging green wire and translucent white paper hourglass sculpture) and `essence-in-subtraction/p04-03.png` (the white carved plaster pillar).
+
+Prompt for each: Use case: background-extraction. Remove only the photograph background, isolating the complete artwork on true transparency for a student artwork portfolio. Preserve its exact photographed proportions, perspective, shape, handmade imperfections, texture, colours and all visible details. No redesign, no added details. Remove hands, people, floor, doors, table and all background objects. Preserve real open holes through the sculpture as transparency, but keep the translucent paper areas and their drawn outlines. Keep the entire artwork including its support wires with modest transparent padding. No text or shadow.

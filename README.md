@@ -1,6 +1,6 @@
 # Medha — Sculpting for Design
 
-A static, image-led art portfolio with a floating artwork homepage and five detailed assignment pages. No framework or dependency installation is required.
+A static, image-led art portfolio with a floating artwork homepage and seven detailed project pages. No framework or dependency installation is required.
 
 ## Run
 
@@ -23,7 +23,7 @@ To add an assignment, add its content to `src/projects.mjs`, place its images an
 
 ## Content and imagery
 
-Project descriptions are grounded in Medha's five supplied submissions and the course brief. Image names preserve the source PDF page and embedded-image number. The detail galleries use original photographs and sketches, converted to WebP for the web. The homepage uses AI-assisted background extractions; the original photographs remain available in the galleries and PDFs.
+Project descriptions are grounded in Medha's supplied submissions and the course brief. Image names preserve the source PDF page and embedded-image number. The detail galleries use original photographs and sketches, converted to WebP for the web. The homepage uses AI-assisted background extractions; the original photographs remain available in the galleries and PDFs.
 
 Design reference: Marion Deuchars' portfolio, especially its white canvas, handmade lettering, image-led presentation, and simple navigation. No artwork, branding, or source code was taken from that website. Caveat is loaded through Google Fonts, with handwriting-style system fallbacks.
 

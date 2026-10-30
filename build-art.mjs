@@ -8,7 +8,9 @@ if (path.dirname(dist) !== root || path.basename(dist) !== 'dist') throw new Err
 rmSync(dist, { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });
 cpSync(path.join(root, 'src/art'), path.join(dist, 'assets/art'), { recursive: true });
-cpSync(path.join(root, 'src/submissions'), path.join(dist, 'submissions'), { recursive: true });
+// Keep the full-resolution PDFs intact on GitHub; the static host has a 25 MB
+// per-file limit. All portfolio images are still served by this website.
+const submissionBase = 'https://raw.githubusercontent.com/pranav1785/mbgwebsite/main/src/submissions/';
 for (const name of ['style.css', 'gallery.js']) cpSync(path.join(root, 'src', name), path.join(dist, name));
 const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const art = (p, file) => `assets/art/${p.source || p.slug}/${file}.webp`;
@@ -35,7 +37,7 @@ for (let i=0;i<projects.length;i++) {
   writeFileSync(path.join(directory,'index.html'),`${head(p.title+' — Medha',p.intro,base)}<body id="top" class="project-page"><a class="skip" href="#project">Skip to project</a>
   <header class="project-header"><a class="small-signature" href="../" aria-label="Medha — back to all assignments">Medha</a><a class="back-link" href="../">← All assignments</a></header>
   <main id="project"><div class="project-intro"><div class="intro-copy"><p class="eyebrow">Assignment ${p.number} / Sculpting for Design</p><h1>${esc(p.title)}</h1><p class="project-deck">${esc(p.intro)}</p><p class="medium">${esc(p.medium)}</p></div><img class="project-object" src="../assets/art/cutouts/${p.cutout}.webp" alt="A preview of ${esc(p.title)}" width="700" height="750" fetchpriority="high"></div>
-  <div class="story"><p class="lead">${esc(p.lead)}</p>${sections}<section class="source-note"><span class="handwritten">The original pages.</span><p>See the sketches, photographs, and reflections together in the submitted portfolio.</p><a class="pdf-link" href="../submissions/${encodeURIComponent(p.pdf)}" target="_blank" rel="noopener">Open assignment PDF ↗ <span>(opens in a new tab)</span></a></section></div>
+  <div class="story"><p class="lead">${esc(p.lead)}</p>${sections}<section class="source-note"><span class="handwritten">The original pages.</span><p>See the sketches, photographs, and reflections together in the submitted portfolio.</p><a class="pdf-link" href="${submissionBase}${encodeURIComponent(p.pdf)}" target="_blank" rel="noopener">Original assignment PDF ↗ <span>(opens in a new tab)</span></a></section></div>
   <nav class="project-end" aria-label="Continue exploring"><a href="../">← All assignments</a><a class="next-project" href="../${next.slug}/"><span>Next assignment →</span><strong>${esc(next.title)}</strong></a></nav></main>${footer('../')}
   <dialog class="lightbox" aria-label="Artwork viewer"><form method="dialog"><button class="close-lightbox" aria-label="Close image">Close ×</button></form><button class="viewer-arrow previous-image" aria-label="Previous image">←</button><figure><img alt=""><figcaption aria-live="polite"></figcaption></figure><button class="viewer-arrow next-image" aria-label="Next image">→</button><p class="viewer-count" aria-live="polite"></p></dialog></body></html>`);
 }

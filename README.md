@@ -27,7 +27,7 @@ Project descriptions are grounded in Medha's five supplied submissions and the c
 
 Design reference: Marion Deuchars' portfolio, especially its white canvas, handmade lettering, image-led presentation, and simple navigation. No artwork, branding, or source code was taken from that website. Caveat is loaded through Google Fonts, with handwriting-style system fallbacks.
 
-The earlier engineering site builder and source assets are retained as legacy source. The art build replaces the generated `dist/` directory. Work is on local branch `codex/sculpting-portfolio`; nothing has been pushed or published.
+The earlier engineering site builder and source assets are retained as legacy source. The art build replaces the generated `dist/` directory. The art portfolio replaces the earlier engineering homepage.
 
 ## Verification
 

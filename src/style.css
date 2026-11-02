@@ -12,3 +12,16 @@
 @media(min-width:601px){.artwork-field{min-height:1600px}.work-6{width:26%;left:17%;top:1060px;transform:rotate(-4deg)}.work-6 .object-space{height:350px}.work-7{width:25%;right:15%;top:1110px;transform:rotate(4deg)}.work-7 .object-space{height:320px}.work-7 .work-name{white-space:normal}.work-6 .work-medium{max-width:280px;margin-left:auto;margin-right:auto;line-height:1.6}}
 @media(min-width:601px) and (max-width:900px){.artwork-field{min-height:1480px}.work-6{width:32%;left:10%;top:1015px}.work-6 .object-space{height:300px}.work-7{width:30%;right:10%;top:1065px}.work-7 .object-space{height:290px}}
 @media(max-width:600px){.work-6{width:69%;align-self:flex-start;margin-left:8%;transform:rotate(-4deg)}.work-6 .object-space{height:340px}.work-7{width:69%;align-self:flex-end;margin-right:8%;transform:rotate(4deg)}.work-7 .object-space{height:300px}.project-credits{font-size:11px}}
+/* Eight projects: three, three, then two centred on the last row. */
+.home .artwork-field{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:80px 36px;min-height:0;max-width:1200px;margin:65px auto 75px;padding:0 35px;align-items:start}
+.home .floating-work{position:relative;inset:auto;width:100%;max-width:none;margin:0;transform:none;grid-column:span 2;align-self:start;justify-self:center;min-width:0}
+.home .floating-work:nth-child(7){grid-column:2/span 2}.home .floating-work:nth-child(8){grid-column:4/span 2}
+.home .object-space{height:270px;max-width:320px;margin:auto}
+.home .work-name{font-size:28px;line-height:1.15;white-space:normal;margin:16px auto 0;max-width:340px}
+.home .work-medium{font-size:9px;line-height:1.7;letter-spacing:.8px;max-width:310px;margin:10px auto 0}
+.home .work-1 .object-space{rotate:-4deg}.home .work-2 .object-space{rotate:3deg}.home .work-3 .object-space{rotate:-2deg}.home .work-4 .object-space{rotate:2deg}.home .work-5 .object-space{rotate:-3deg}.home .work-6 .object-space{rotate:2deg}.home .work-7 .object-space{rotate:-2deg}
+.home .work-8 .object-space img{transform:scale(1.45)}.project-object.preview-casts{transform:scale(1.4) rotate(3deg)}
+.project-intro:has(.preview-casts){overflow:clip}
+.trimmed-image{display:block}.trimmed-image img{height:auto}
+@media(min-width:601px) and (max-width:900px){.home .artwork-field{gap:65px 22px;padding:0 25px}.home .object-space{height:210px}.home .work-name{font-size:24px}.home .work-medium{font-size:8px}}
+@media(max-width:600px){.home .artwork-field{grid-template-columns:minmax(0,1fr);gap:55px;margin:50px auto 60px;padding:0 30px}.home .floating-work:nth-child(n){grid-column:auto;width:90%;max-width:340px}.home .object-space{height:280px}.home .work-name{font-size:29px}.home .work-medium{font-size:9px}}

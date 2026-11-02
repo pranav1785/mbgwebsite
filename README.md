@@ -1,6 +1,6 @@
 # Medha — Sculpting for Design
 
-A static, image-led art portfolio with a floating artwork homepage and seven detailed project pages. No framework or dependency installation is required.
+A static, image-led art portfolio with a floating artwork homepage and eight detailed project pages. No framework or dependency installation is required.
 
 ## Run
 

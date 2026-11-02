@@ -20,7 +20,7 @@
 .home .work-name{font-size:28px;line-height:1.15;white-space:normal;margin:16px auto 0;max-width:340px}
 .home .work-medium{font-size:9px;line-height:1.7;letter-spacing:.8px;max-width:310px;margin:10px auto 0}
 .home .work-1 .object-space{rotate:-4deg}.home .work-2 .object-space{rotate:3deg}.home .work-3 .object-space{rotate:-2deg}.home .work-4 .object-space{rotate:2deg}.home .work-5 .object-space{rotate:-3deg}.home .work-6 .object-space{rotate:2deg}.home .work-7 .object-space{rotate:-2deg}
-.home .work-8 .object-space img{transform:scale(1.45)}.project-object.preview-casts{transform:scale(1.4) rotate(3deg)}
+.home .work-8 .object-space img{transform:none}.project-object.preview-casts{transform:rotate(3deg)}
 .project-intro:has(.preview-casts){overflow:clip}
 .trimmed-image{display:block}.trimmed-image img{height:auto}
 @media(min-width:601px) and (max-width:900px){.home .artwork-field{gap:65px 22px;padding:0 25px}.home .object-space{height:210px}.home .work-name{font-size:24px}.home .work-medium{font-size:8px}}

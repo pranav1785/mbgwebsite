@@ -529,7 +529,7 @@ export const projects = [
     "number": "08",
     "medium": "Silicone moulds · Plaster · Clay · Resin",
     "cutout": "casts",
-    "alt": "A painted orange cast made from a fruit mould",
+    "alt": "Painted orange, apple, and cucumber casts arranged together",
     "pdf": "MOULDING AND CASTING OF FRUITS AND VEGETABLES.pdf",
     "credits": "Group project with Astha Chand and Sudiksha Suresh",
     "intro": "We explored how a fruit or vegetable could become a mould, then return as a cast in a different material.",

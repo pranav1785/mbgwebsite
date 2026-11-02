@@ -31,3 +31,8 @@ Prompt for each: Use case: background-extraction. Remove only the photograph bac
 ## Moulding and casting
 
 The new project uses original embedded images extracted from the supplied PDF, including its already transparent orange cutout for the homepage (`src/art/cutouts/casts.webp`). No generated imagery was needed. Gallery layout trims transparent padding through CSS while preserving the source pixels and original photographs in the image viewer.
+
+
+## Grouped casting preview
+
+Replaced the single orange homepage/project preview with a built-in image-tool background extraction of `moulding-and-casting/p08-08.png`, saved in `src/art/cutouts/casts.webp`. Prompt: isolate the three handmade painted casts together from the exact photograph; preserve the cucumber behind the orange and red apple, their positions, shapes, painted textures, colours, imperfections, camera angle, and lighting. Remove the tabletop and cast shadows for true transparency; do not redraw, improve, add, remove, or rearrange any object. Keep all three complete with minimal transparent padding.
